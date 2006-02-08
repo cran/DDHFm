@@ -5,6 +5,8 @@
 
 \usepackage{geometry}
 \usepackage{color}
+\usepackage{amsfonts}
+\usepackage{amsmath}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.75}
 \usepackage[%
 baseurl={http://www.bioconductor.org},%
@@ -30,6 +32,15 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
     \end{center}
   \end{figure}
 }
+%------------------------------------------------------------
+% newcommand: my own
+%------------------------------------------------------------
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\sLog}{\operatorname{sLog}}
+\newcommand{\Hyb}{\operatorname{Hyb}}
+
+
 
 
 
@@ -333,6 +344,96 @@ the Poisson data (or should be). Possibly a better comparison would be
 a wavelet shrunk estimate instead of a smoothing spline estimate (but this
 is a question of the smoothing employed and not of the transform).
 	
+\section{Appendix: The Data-Driven Haar-Fisz transform}
+The Haar-Fisz (HF) transform was introduced by \cite{F04}
+and the Data-Driven HF (DDHF) transform in \cite{FD05,FDN05}.
+
+\subsection{Basic idea of Haar-Fisz} The basic idea of HF consists of two components. Suppose we have a sequence of $n$
+random variables: $X_1, \ldots, X_n$ where $n = 2^J$ is a power of
+two for some $J$. First, the discrete \cite{H10}  wavelet
+transform forms `mother' and `father' wavelet coefficients at the
+finest scale: $d_{1,k} = X_{2k} - X_{2k+1}$ and $c_{1,k} = X_{2k}
++ X_{2k+1}$. Then recursively applies these two operations to form
+mother and father coefficients at coarser scales by:
+\begin{equation}
+\label{eqn:father} c_{j+1, k} = c_{j,2k} + c_{j,2k+1}
+\end{equation} and
+\begin{equation}
+\label{eqn:mother} d_{j+1, k} = c_{j,2k} - c_{j,2k+1}
+\end{equation}
+respectively for $j=1, \ldots,  J$ and $k=1, \ldots, 2^{J-j}$. For
+example, the first scale 2 mother wavelet coefficient is $d_{2,1}
+= X_1 + X_2 - X_3 + X_4$ and the first scale 3 father wavelet
+coefficient is $c_{3,1} = \sum_{i=1}^8 X_i$. Clearly as $j$
+increases the information contained in $c_{j,k}$ and $d_{j,k}$
+refers to progressively coarser scales. The forward Haar wavelet
+transform of ${\mathcal X} = \{ X_1, \ldots, X_n \}$ formally
+consists of
+$${\mathcal W} = \{ c_{J,1}; d_{J,1}; d_{J-1,1}, d_{J-1, 2}; \ldots; d_{1,1}, \ldots, d_{1,2^{J-1}} \}$$
+which is the coarsest scale father wavelet and all of the mother
+wavelet coefficients. The inverse wavelet transform transforms
+${\mathcal W}$ into ${\mathcal X}$ using identical formulae
+to~(\ref{eqn:father}) and~(\ref{eqn:mother}). Both the forward and
+inverse transforms are fast and memory efficient (both are of
+order $n$).
+
+Suppose now that we assume that the $X_i$ are independently
+Poisson distributed with parameter $\lambda_i$. Then, since the
+sum of Poisson random variables is itself Poisson it is always the
+case that $c_{j,k}$ is distributed as Poisson and $d_{j,k}$ has a
+distribution which is the difference of two independent Poisson
+random variables. Define
+\begin{equation}
+\label{eq:fiszcoef} f_{j,k} = d_{j,k} / c_{j,k}^{1/2}
+\end{equation}
+to be the HF coefficient at scale $j$ and location $k$. A theorem
+by \cite{F55} shows that $f_{j,k}$ is asymptotically normal
+(under an asymptotic regime whereby the underlying intensities of
+the component Poisson random variables tend to infinity, and the
+intensities of the two random variables involved in $d_{j,k}$ tend
+to each other). \cite{F04} use this result and
+demonstrate that $f_{j,k}$ is approximately normal with a constant
+variance that does not depend on the intensity parameters
+$\lambda_i$. Applying the inverse Haar wavelet transform to the
+sequence
+$$
+\{ c_{J,1}; f_{J,1}; f_{J-1,1}, f_{J-1,2}; \ldots; f_{1,1},
+\ldots, f_{1, 2^{J-1}} \}
+$$
+results in a variance stabilized sequence ${\mathcal U} = \{ U_1,
+\ldots, U_n \}$ with constant variance and marginal distribution
+close to normality. The Fisz theory applies to distributions other
+than Poisson, e.g.\ for $\chi^2$ data but with a different power in the denominator.
+Subsequent work has
+extended the idea in other directions:  for images in
+\cite{F04} and using more general wavelets than Haar in
+\cite{J03}.
+
+\subsection{Data-driven Haar-Fisz}
+The HF transform previous section relied on knowledge of the
+underlying distribution. However, there
+are many instances where the underlying distribution is not known.
+
+The Data-Driven Haar-Fisz (DDHF) transform works in situations
+where the underlying distribution of the data is {\em not} known
+and estimates the mean-variance relationship. The assumptions of
+DDHF transform are (i) the input $\{ X_i \}_{i=1}^n$ is a sequence of
+independent, positive random variables with finite positive means
+$\mu_i = \E (X_i) > 0$ and finite positive variances $\sigma^2_i =
+\Var(X_i) > 0$; (ii) $n$ must be a power of two (although there
+are ways around this); (iii) the variance $\sigma^2_i$ must be a
+non-decreasing function of the mean $\mu_i$: $\sigma^2_i =
+h(\mu_i)$ where the function $h$ is independent of $i$. In the  DDHF transform
+the mean-variance relation $h$ is assumed unknown and it is
+estimated from the finest scale mother and father wavelet
+coefficients. So, again, a multiscale variance stabilization is
+achieved as with HF but this time the precise relationship is not
+known and is estimated. Work by \cite{FDN05} shows
+that, at least for Poisson and $\chi^2$ noise, the DDHF transform with $h$ estimated
+does not perform much worse than HF where the actual $h$ is used.
+
+
+
 
 \begin{thebibliography}{10}
 
@@ -340,6 +441,11 @@ is a question of the smoothing employed and not of the transform).
 Burrus, C.S., Gopinath, R.A.\ and Guo, H. (1998)
 \newblock {\em Introduction to Wavelets and Wavelet Transforms: a Primer.}
 \newblock Prentice-Hall: Upper Saddle River, NJ.
+
+\bibitem{F04} Fadili, M.J., Mathieu, J.\ and
+Desvignes, M. (2004) La transformation de Fisz pour l'estimation de l'image
+des intensit\'es d'un bruit Poissonien dans le domaine des ondelettes.
+{\em Traitement du signal}, {\bf 21}, 313--328.
 
 \bibitem{F55}
 Fisz, M. (1955)
@@ -366,6 +472,14 @@ Fryzlewicz, P.\ and Nason, G.P. (2004)
 \newblock A Haar-Fisz algorithm for Poisson intensity estimation.
 \newblock {\em Journal of Computational and Graphical Statistics},
 	{\bf 13}, 621--638.
+
+\bibitem{H10} Haar, A. (1910) Zur Theorie der orthogonalen Funktionensysteme.
+{\em Math.\ Ann.}, {\bf 69}, 331--371.
+
+\bibitem{J03} Jansen, M. (2003) Multiscale Poisson data smoothing.
+{\em Tech.\ Rep.}, TU Eindhoven SPOR 03-29.
+
+
 
 \bibitem{MFOLHBP4} McCaffrey, R.L., Fawcett, P., O'Riordan, M.,
 	Lee, K., Havell, E.A.,  Brown, P.O.\ and Portnoy, D.A. (2004)
