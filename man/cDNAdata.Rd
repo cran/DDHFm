@@ -4,7 +4,6 @@
 \description{Arranges a vector of intensities into a form amenable to analysis
 	by the DDHF and also can restrict the number of genes analysed and
 	also obtain a random sample}
-}
 \usage{
  cDNAdata(data.vect,cdnalength,datasize,ng,nrep)
 }
@@ -19,7 +18,7 @@
 	in \code{data.vect}}
 }
 \details{
-   The $J = ng \times nrep$ vector data.vect should contain first the
+   The \deqn{J = ng \times nrep} vector data.vect should contain first the
 	intensities of the first replicate of the \code{ng} genes',
 	then the second replicate of all of the \code{ng} genes in the
 	same order, and so on.
