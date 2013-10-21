@@ -186,7 +186,7 @@ Free(v);
 void isotoneC(double *x, double *wt, int *nn, int *increasing) 
 {
 int i,j,jb;
-int nx, ndx,nwt;
+int nx, ndx;
 int indl,indr;
 int ipcnt, nuxcnt;
 int *jmax, *jmin, jmaxcnt=0, jmincnt=0;

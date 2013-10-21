@@ -8,7 +8,9 @@
  simulation is performed using \code{\link{simdurbin2}}
 }
 \usage{
-dhhrcomp(nsims = 1024, nmu = 4, mu0 = c(0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 65, 70, 80, 100, 200, 300, 500, 1000) * 1000)
+dhhrcomp(nsims = 1024, nmu = 4,
+	mu0 = c(0, 5, 10, 15, 20, 25, 30, 40, 50, 60,
+	65, 70, 80, 100, 200, 300, 500, 1000) * 1000)
 }
 \arguments{
   \item{nsims}{Number of replicates for each mu}
