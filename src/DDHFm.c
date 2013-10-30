@@ -352,7 +352,7 @@ while( (nx > 1) && (minvC(dx, &ndx) < 0))	{
 
 	}
 
-Lx = (double *)Calloc( nn, double);
+Lx = (double *)Calloc( *nn, double);
 
 nuxcnt = 0;
 

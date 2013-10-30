@@ -1,3 +1,8 @@
 1.1:	Brought the package up to R3.0.2 standards
 	Included NAMESPACE, small change to dhhrcomp.Rd
 	Moved vignettes to vignettes directory (from inst/doc) 
+
+1.1.1:	Bugfix. Bug noted by Professor Brian Ripley, Oxford.
+	Pointer reference was used erroneously as value in line
+		Lx = (double *)Calloc( nn, double);
+	of DDHFm.c. The nn (which is a pointer) has been changed to *nn	
