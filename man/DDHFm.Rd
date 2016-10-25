@@ -56,12 +56,21 @@ DDHFm(x)
 	stabilized and Gaussianized version of the entry in the input
 	matrix.
 }
-\references{Motakis, E.S., Nason, G.P., Fryzlewicz, P. and Rutter, G.A.
+\references{
+Motakis, E.S., Nason, G.P., Fryzlewicz, P. and Rutter, G.A.
 	(2005)
 	Variance stabilization and normalization for one-color
 	microarray data using a data-driven multiscale approach.
 	\emph{Technical Report}, 05:16, Statistics Group,
-	Department of Mathematics, University of Bristol, UK}
+	Department of Mathematics, University of Bristol, UK
+
+Motakis, E.S., Nason, G.P., Fryzlewicz, P. and Rutter, G.A.
+	(2006)
+	Variance stabilization and normalization for one-color
+	microarray data using a data-driven multiscale approach.
+	\emph{Bioinformatics}, \bold{22}, 2547--2553.
+}
+
 \author{Guy Nason}
 
 \seealso{\code{\link{ddhft.np.2}}}

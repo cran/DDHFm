@@ -1,2 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 useDynLib(DDHFm)
+importFrom("graphics", "lines", "plot")
+importFrom("stats", "rgamma", "rnorm", "smooth.spline", "var")
+import("wavethresh")
+import("lokern")

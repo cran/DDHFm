@@ -6,3 +6,5 @@
 	Pointer reference was used erroneously as value in line
 		Lx = (double *)Calloc( nn, double);
 	of DDHFm.c. The nn (which is a pointer) has been changed to *nn	
+
+1.1.2:	Added Shipping Credit Flow data and associated help file.
