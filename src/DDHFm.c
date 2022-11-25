@@ -64,7 +64,7 @@ void which_min_diffC(double *a, double *vect, int *lvect, int *ans)
 /*
 int i;
 double *fabsvect;
-void which_minvC();
+double minvC(double *v, int *n);
 
 fabsvect = (double *)Calloc(*lvect, double);
 
@@ -98,7 +98,7 @@ void function_from_vectorC(double *x, double *y, int *lx, double *argvec,
 int i;
 int ans;
 
-void which_min_diffC();
+void which_min_diffC(double *a, double *vect, int *lvect, int *ans);
 
 for(i=0; i < *lav; ++i)	{
 	which_min_diffC(argvec+i, x, lx, &ans);
@@ -119,7 +119,8 @@ void CentralDDHFT(double *sm,
 {
 int i,j;
 int musiglength;
-void function_from_vectorC();
+void function_from_vectorC(double *x, double *y, int *lx, double *argvec,
+		double *ansvec, int *lav);
 double *v;
 
 
@@ -196,7 +197,7 @@ double *Lx;
 double *dx, wtn;
 int *killx;
 
-double minvC();
+double minvC(double *v, int *n);
 
 if (*nn == 1)
 	return;
