@@ -1,4 +1,4 @@
-ceebbbecfa7713141330265ba9ba52ca *DESCRIPTION
+e1b968b065f897a64f9155af9ac4e7e2 *DESCRIPTION
 c1c30cf23412fecb44d924b32efb9681 *NAMESPACE
 01ece839d2b5babc86d4304af3691036 *R/DDHFm.R
 b66ca582d11afab2bd129e71fcf1f018 *R/KURTOSIS.R
@@ -16,14 +16,14 @@ b3101f660b55705635a41410faea8f0c *R/isotone.R
 7e09aefc954087349d6542cebabd13aa *R/simdurbin.R
 f398352a56a3ca0f06e833c7c27c896b *R/simdurbin2.R
 b1fa6a290607883a136cbb07f0fecb65 *R/which.min.diff.R
-91976a08d0d5f18d1c4e651336a6256b *build/vignette.rds
-c661bc931e9fa7084552aa832c57259d *data/ShipCreditFlow.rda
-52d0d8843a9c457c169f2737067cf156 *data/cdna.rda
+5e45d1010971b338ef786aaa68f6559b *build/vignette.rds
+5da3276ad5bc97d7fc31b1254754d6a3 *data/ShipCreditFlow.rda
+8d6aae03874ea4ff82e1288e59368fcb *data/cdna.rda
 e61b1ab451319cca0798f70dec5a4544 *data/datalist
-dbb54aded29fbc3e3d671462ee2f1d9c *inst/CHANGES
+93b3e66216b559598b7be92d34306ef7 *inst/CHANGES
 0705ab3b05aefcb6d0c5860eabc57e1f *inst/doc/DDHFm.R
 f3da76cbb6b515b6a1448e3eb2840e66 *inst/doc/DDHFm.Rnw
-d2ace3c7ed436402eedac84e9b67329f *inst/doc/DDHFm.pdf
+a136765bfb1bd309d2c6b48d07848d09 *inst/doc/DDHFm.pdf
 a6a901fab00803e0ff482b22b4ddc12b *man/DDHFm.Rd
 be05199df33cefd7ab83ef7f52c718c0 *man/KURTOSIS.Rd
 1b0c2a25a858a923837744adde698c4b *man/MOMENTS.Rd
@@ -42,7 +42,7 @@ a15cae1d22ca7cce8b4bd1f9f04dd92e *man/isotone.Rd
 56b22a38e6a790252c765f2ad12d2f08 *man/simdurbin.Rd
 3d3e1055441bce4a8b8b76ad5785eedd *man/simdurbin2.Rd
 9ac1c1e239b6d292a95ec1a7146380f4 *man/which.min.diff.Rd
-ff0e7b536e5d83b99baa8ed2073e2948 *src/DDHFm.c
+8f217fe53d98bb95ae423d84a9c6011d *src/DDHFm.c
 ad97082fff81dab7ee61da6c0c806669 *src/DDHFm_init.c
 d50617501d7145fea92f6897d56d1ebe *vignettes/DDHFm-cdna-compare.pdf
 d2bf1ebf53933839fad303ad0a49d7f2 *vignettes/DDHFm-cdna-ddhfm.pdf

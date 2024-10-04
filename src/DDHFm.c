@@ -1,3 +1,7 @@
+
+#define STRICT_R_HEADERS
+
+
 #include <R.h>
 #include <math.h>
 
@@ -66,14 +70,14 @@ int i;
 double *fabsvect;
 double minvC(double *v, int *n);
 
-fabsvect = (double *)Calloc(*lvect, double);
+fabsvect = (double *)R_Calloc(*lvect, double);
 
 for(i=0; i < *lvect; ++i)
 	*(fabsvect+i) = fabs(*a - *(vect+i));
 
 which_minvC(fabsvect, lvect, ans);
 
-Free(fabsvect);
+R_Free(fabsvect);
 */
 
 register int i;
@@ -127,7 +131,7 @@ double *v;
 musiglength = *nhalf;
 
 
-v = (double *)Calloc(*n, double);
+v = (double *)R_Calloc(*n, double);
 
 for(i=1; i <= *J; ++i)	{
 
@@ -181,7 +185,7 @@ for(i=1; i <= *J; ++i)	{
 	}
 
 
-Free(v);
+R_Free(v);
 }
 
 void isotoneC(double *x, double *wt, int *nn, int *increasing) 
@@ -202,8 +206,8 @@ double minvC(double *v, int *n);
 if (*nn == 1)
 	return;
 
-killx = (int *)Calloc( *nn, int);
-ip = (int *)Calloc( *nn, int);
+killx = (int *)R_Calloc( *nn, int);
+ip = (int *)R_Calloc( *nn, int);
 
 for(i=0; i < *nn; ++i)
 	*(ip+i) = i;
@@ -214,7 +218,7 @@ if (!*increasing)	{
 	}
 
 ndx = *nn-1;
-dx = (double *)Calloc(ndx, double);
+dx = (double *)R_Calloc(ndx, double);
 
 /* Do diff */
 
@@ -226,8 +230,8 @@ for(i=0; i < *nn-1; ++i)
 nx = *nn;
 
 /* Get space for two indicator arrays used later */
-jmax = (int *)Calloc(nx, int);
-jmin = (int *)Calloc(nx, int);
+jmax = (int *)R_Calloc(nx, int);
+jmin = (int *)R_Calloc(nx, int);
 
 while( (nx > 1) && (minvC(dx, &ndx) < 0))	{
 
@@ -330,18 +334,18 @@ while( (nx > 1) && (minvC(dx, &ndx) < 0))	{
 			}
 		}
 
-	Free(killx);
+	R_Free(killx);
 	
 	/* Now make memory for new Lx and copy across */
 	nx = nuxcnt;
-	killx = (int *)Calloc( nx, double);
+	killx = (int *)R_Calloc( nx, double);
 
 
 	/* Now make memory for new dx and make them */
 
-	Free(dx);	
+	R_Free(dx);	
 	ndx = nx-1;
-	dx = Calloc(ndx, double);
+	dx = R_Calloc(ndx, double);
 
 	/* Do diff */
 
@@ -349,11 +353,11 @@ while( (nx > 1) && (minvC(dx, &ndx) < 0))	{
 		*(dx+i) = *(x+i+1) - *(x+i);
 
 			
-	/* Free jmax and jmin */
+	/* R_Free jmax and jmin */
 
 	}
 
-Lx = (double *)Calloc( *nn, double);
+Lx = (double *)R_Calloc( *nn, double);
 
 nuxcnt = 0;
 
@@ -385,14 +389,14 @@ else
 	for(j=0; j < *nn; ++j)
 		*(x+j) = *(Lx+j);
 
-/* Free stuff */ 
+/* R_Free stuff */ 
 
-Free(ip);
-Free(Lx);
-Free(dx);
-Free(killx);
-Free(jmax);
-Free(jmin);
+R_Free(ip);
+R_Free(Lx);
+R_Free(dx);
+R_Free(killx);
+R_Free(jmax);
+R_Free(jmin);
 }
 
 /* Find minimum value of vector, R min function */

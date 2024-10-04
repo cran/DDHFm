@@ -11,3 +11,5 @@
 
 1.1.3:	Changed maintainer email address to Imperial College. Added C
 	code to register routines
+
+1.1.4: Added #define R_STRICT_HEADERS to DDHFm.c and changed Free to R_Free and Calloc to R_Calloc
